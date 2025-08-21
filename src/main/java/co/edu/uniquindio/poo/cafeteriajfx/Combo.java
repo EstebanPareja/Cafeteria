@@ -3,14 +3,14 @@ package co.edu.uniquindio.poo.cafeteriajfx;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Combo extends Product {
+public class Combo extends Producto {
 
-    private List<Drinks> comboDrinks;
-    private  List<Comestibles> comboComestibles;
+    private List<Bebida> bebidasCombo;
+    private  List<Comestible> comestibleCombo;
 
-    public Combo(String name, double price, String id) {
-        super(name, price, id);
-        this.comboDrinks = new ArrayList<Drinks>();
-        this.comboComestibles = new ArrayList<>();
+    public Combo(String name, double price, String id,  int stock) {
+        super(name, price, id,  stock);
+        this.bebidasCombo = new ArrayList<>();
+        this.comestibleCombo = new ArrayList<>();
     }
 }
