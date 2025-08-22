@@ -4,13 +4,11 @@ package co.edu.uniquindio.poo.cafeteriajfx;
 public class Producto {
     private String nombre, id;
     private double precio;
-    private int stock;
 
-    public Producto(String nombre, double precio, String id, int stock) {
+    public Producto(String nombre, double precio, String id) {
         this.nombre = nombre;
         this.precio = precio;
         this.id = id;
-        this.stock = stock;
     }
 
     public String getId() {
@@ -37,13 +35,7 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getStock() {
-        return stock;
-    }
 
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
 
     @Override
     public String toString() {

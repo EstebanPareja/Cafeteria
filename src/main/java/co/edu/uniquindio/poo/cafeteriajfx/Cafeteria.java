@@ -10,15 +10,17 @@ public class Cafeteria {
     private List<Producto> listProductos;
     private List<Pedido> listPedidos;
 
-    private Cafeteria () {
+    private Cafeteria() {
         this.nombre = "UQ HANGAR";
         this.nit = "112233";
-        this.listPersonas= new ArrayList<>();
+        this.listPersonas = new ArrayList<>();
         this.listProductos = new ArrayList<>();
+        this.listPedidos = new ArrayList<>();
     }
 
     /**
      * Metodo para validar la existencia de una persona en una lista
+     *
      * @param persona
      * @return boolean
      */
@@ -34,6 +36,7 @@ public class Cafeteria {
 
     /**
      * Metodo para agregar una persona a una lista
+     *
      * @param persona
      * @return boolean
      */
@@ -48,6 +51,7 @@ public class Cafeteria {
 
     /**
      * Metodo para eliminar a una persona de una lista
+     *
      * @param id
      * @return boolean
      */
@@ -64,6 +68,7 @@ public class Cafeteria {
 
     /**
      * Metodo para actualizar a una persona de una lista
+     *
      * @param id
      * @param persona
      * @return boolean
@@ -80,6 +85,7 @@ public class Cafeteria {
 
     /**
      * Metodo para mostrar una persona de una lista
+     *
      * @param id
      * @return persona
      */
@@ -94,6 +100,7 @@ public class Cafeteria {
 
     /**
      * Metodo para validar la existencia de un producto en una lista
+     *
      * @param producto
      * @return boolean
      */
@@ -109,6 +116,7 @@ public class Cafeteria {
 
     /**
      * Metodo para agregar un producto a una lista
+     *
      * @param producto
      * @return boolean
      */
@@ -123,6 +131,7 @@ public class Cafeteria {
 
     /**
      * Metodo para eliminar un producto de una lista
+     *
      * @param id
      * @return boolean
      */
@@ -139,6 +148,7 @@ public class Cafeteria {
 
     /**
      * Metodo para actualizar un producto de una lista
+     *
      * @param id
      * @param producto
      * @return boolean
@@ -155,6 +165,7 @@ public class Cafeteria {
 
     /**
      * Metodo para mostrar un producto de una lista
+     *
      * @param id
      * @return producto
      */
@@ -169,6 +180,7 @@ public class Cafeteria {
 
     /**
      * Metodo para validar la existencia de un pedido en una lista
+     *
      * @param pedido
      * @return boolean
      */
@@ -184,6 +196,7 @@ public class Cafeteria {
 
     /**
      * Metodo para agregar un pedido a una lista
+     *
      * @param pedido
      * @return boolean
      */
@@ -198,6 +211,7 @@ public class Cafeteria {
 
     /**
      * Metodo para eliminar un pedido de una lista
+     *
      * @param id
      * @return boolean
      */
@@ -214,6 +228,7 @@ public class Cafeteria {
 
     /**
      * Metodo para actualizar un pedido de una lista
+     *
      * @param id
      * @param pedido
      * @return boolean
@@ -230,9 +245,11 @@ public class Cafeteria {
 
     /**
      * Metodo para mostrar un pedido de una lista
+     *
      * @param id
      * @return pedido
      */
+
     public Pedido mostrarPedido(String id) {
         for (Pedido pedido : listPedidos) {
             if (pedido.getId().equals(id)) {
@@ -241,6 +258,47 @@ public class Cafeteria {
         }
         return null;
     }
+
+    /**
+     * Metodo para crear un preducto pedido
+     *
+     * @param pedido
+     * @param cantidad
+     * @return booleam
+     */
+
+    public boolean agregarProductoPedido(Pedido pedido, Producto producto, int cantidad) {
+        return pedido.crearProductoPedido(producto, cantidad);
+    }
+
+
+    public boolean verificarPedidoClienteExiste(Pedido pedido) {
+        for (Pedido order : pedido.getCliente().getListPedidosCliente()) {
+            if (pedido.getId().equals(order.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Metodo para agregar un pedido a una lista de un cliente
+     *
+     * @param pedido
+     * @return boolean
+     */
+
+    public boolean agregarPedidoCliente(Pedido pedido) {
+        if (verificarPedidoClienteExiste(pedido)) {
+            return false;
+        } else {
+            pedido.getCliente().getListPedidosCliente().add(pedido);
+            return true;
+        }
+    }
+
+
+
 
 
     public String getNombre() {
@@ -274,4 +332,6 @@ public class Cafeteria {
     public void setListProductos(List<Producto> listProductos) {
         this.listProductos = listProductos;
     }
+
+
 }
